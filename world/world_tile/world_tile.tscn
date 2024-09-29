@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=4 uid="uid://bkj4o3v1f46wn"]
+
+[ext_resource type="Script" path="res://world/world_tile/world_tile.gd" id="1_mk1d5"]
+[ext_resource type="Texture2D" uid="uid://3vbv1nr077xm" path="res://tileset/floor.png" id="2_fl0cb"]
+[ext_resource type="PackedScene" uid="uid://bw53hcrwiv44l" path="res://player/player.tscn" id="3_jycpr"]
+[ext_resource type="Texture2D" uid="uid://b21t7kywqw8mr" path="res://world/arrow/arrow.png" id="5_vtc3e"]
+[ext_resource type="Script" path="res://world/arrow/arrow.gd" id="6_8k74d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pnsdb"]
+texture = ExtResource("2_fl0cb")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6fl0g"]
+sources/0 = SubResource("TileSetAtlasSource_pnsdb")
+
+[node name="WorldTile" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_mk1d5")
+
+[node name="Arrows" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Right" type="Sprite2D" parent="Arrows"]
+position = Vector2(42, 0)
+texture = ExtResource("5_vtc3e")
+script = ExtResource("6_8k74d")
+
+[node name="Up" type="Sprite2D" parent="Arrows"]
+position = Vector2(0, -42)
+rotation = 4.71239
+texture = ExtResource("5_vtc3e")
+script = ExtResource("6_8k74d")
+
+[node name="Left" type="Sprite2D" parent="Arrows"]
+position = Vector2(-42, 0)
+rotation = 3.14159
+texture = ExtResource("5_vtc3e")
+script = ExtResource("6_8k74d")
+
+[node name="Down" type="Sprite2D" parent="Arrows"]
+position = Vector2(0, 42)
+rotation = 1.5708
+texture = ExtResource("5_vtc3e")
+script = ExtResource("6_8k74d")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAACAP//AAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///3/AAAAAAAAAAD+//7/AAAAAAAAAAAAAAEAAAAAAAAAAAACAP3/AAAAAAAAAAABAP3/AAAAAAAAAAAAAP3/AAAAAAAAAAD+//3/AAAAAAAAAAD9//3/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6fl0g")
+
+[node name="Player" parent="." instance=ExtResource("3_jycpr")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwgbyy5ffqiep"]
+
+[ext_resource type="PackedScene" uid="uid://bkj4o3v1f46wn" path="res://world/world_tile/world_tile.tscn" id="1_ihthh"]
+[ext_resource type="Script" path="res://world/world_tile/types/zombie_small_group.gd" id="2_vx277"]
+
+[node name="WorldTile" instance=ExtResource("1_ihthh")]
+script = ExtResource("2_vx277")
