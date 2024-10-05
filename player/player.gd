@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		var mouse_pos := get_global_mouse_position().round()
 		global_position = global_position.move_toward(mouse_pos, delta * 30)
 	
-	position = position.clamp(Vector2(-48, -48), Vector2(48, 48))
+	position = position.clamp(Vector2(-46, -46), Vector2(46, 46))
 	
 	# flip sprite
 	if roundi(prev_x) != roundi(global_position.x):
