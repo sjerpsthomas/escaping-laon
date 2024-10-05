@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	var player: Player = world_tile.player
 	var dist := global_position.distance_to(player.global_position)
 	
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or not Rect2(Vector2(-6, -6), Vector2(12, 12)).has_point(mouse_pos) or dist > 10:
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or not Rect2(Vector2(-8, -8), Vector2(16, 16)).has_point(mouse_pos) or dist > 10:
 		go_timer /= 1.1
 		return
 	

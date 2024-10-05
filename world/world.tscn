@@ -1,15 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://dypoyjxmbl7oj"]
+[gd_scene load_steps=4 format=3 uid="uid://dypoyjxmbl7oj"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_lc4fv"]
 [ext_resource type="Script" path="res://world/camera.gd" id="3_fahtr"]
+[ext_resource type="Script" path="res://world/ui.gd" id="3_luqe2"]
 
 [node name="World" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_lc4fv")
-size = Vector2i(4, 3)
+size = Vector2i(10, 10)
 
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("3_fahtr")
 metadata/_edit_lock_ = true
+
+[node name="UI" type="Control" parent="."]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 144.0
+offset_bottom = 96.0
+script = ExtResource("3_luqe2")
+
+[node name="LeftBar" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="RightBar" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 144.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="Minimap" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 74.0
+offset_right = 22.0
+offset_bottom = 94.0
+color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[node name="Dot" type="ColorRect" parent="UI/Minimap"]
+layout_mode = 0
+offset_right = 2.0
+offset_bottom = 2.0
