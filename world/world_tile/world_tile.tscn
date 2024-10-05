@@ -58,3 +58,33 @@ tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAA
 tile_set = SubResource("TileSet_6fl0g")
 
 [node name="Player" parent="." instance=ExtResource("3_jycpr")]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Left" type="ColorRect" parent="Walls"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -44.0
+offset_bottom = 48.0
+color = Color(1, 0, 0, 1)
+
+[node name="Right" type="ColorRect" parent="Walls"]
+offset_left = 44.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(1, 0, 0, 1)
+
+[node name="Up" type="ColorRect" parent="Walls"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = -44.0
+color = Color(1, 0, 0, 1)
+
+[node name="Down" type="ColorRect" parent="Walls"]
+offset_left = -48.0
+offset_top = 44.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(1, 0, 0, 1)

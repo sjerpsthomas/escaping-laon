@@ -14,6 +14,18 @@ func _ready() -> void:
 	# HACK: y sort not saved properly
 	y_sort_enabled = true
 
+# 
+func generate_walls(tile: WorldGenerator.Tile) -> void:
+	var walls := WorldGenerator.Tile.all_directions
+	
+	# go over all walls
+	for i in range(walls.size()):
+		var wall = walls[i]
+		
+		# free wall at index if not in tile
+		if wall not in tile.walls:
+			$Walls.get_child(i).queue_free()
+
 # (ABSTRACT) generates content for the tile
 func generate() -> void: pass
 

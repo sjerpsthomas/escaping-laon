@@ -15,6 +15,10 @@ var current_coords: Vector2i
 func _ready() -> void:
 	tiles.resize(size.x * size.y)
 	
+	WorldGenerator.width = size.x
+	WorldGenerator.height = size.y
+	WorldGenerator.generate(0)
+	
 	generate_tiles()
 	assert(size.x * size.y == $Tiles.get_child_count())
 	
@@ -41,6 +45,10 @@ func place_tile(coords: Vector2i, tile: WorldTile) -> void:
 	# set position
 	tile.position = Vector2(48, 48) + Vector2(coords * 96)
 	
+	# generate walls
+	tile.generate_walls(WorldGenerator.get_tile(coords))
+	
+	# generate tile-specific attributes
 	tile.generate()
 
 # sets the tile at the specified coords
