@@ -9,19 +9,6 @@ var go_timer := 0.0
 
 
 # -
-func _ready() -> void:
-	# check if the arrow can be deleted
-	await world_tile.ready
-	await world_tile.world.ready
-	var size := world_tile.world.size
-	var coords_to := world_tile.coords + direction
-	
-	var valid := coords_to.x >= 0 and coords_to.y >= 0 \
-		and coords_to.x < size.x and coords_to.y < size.y
-	
-	if not valid: queue_free()
-
-# -
 func _process(delta: float) -> void:
 	var camera := world_tile.world.camera
 	camera.transition_offsets[direction] = go_timer * 3

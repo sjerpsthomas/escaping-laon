@@ -7,7 +7,7 @@
 [node name="World" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_lc4fv")
-size = Vector2i(10, 10)
+size = Vector2i(8, 8)
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -38,10 +38,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Minimap" type="ColorRect" parent="UI"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 74.0
-offset_right = 22.0
-offset_bottom = 94.0
+offset_left = 4.0
+offset_top = 76.0
+offset_right = 20.0
+offset_bottom = 92.0
 color = Color(0.114897, 0.114897, 0.114897, 1)
 
 [node name="Dot" type="ColorRect" parent="UI/Minimap"]

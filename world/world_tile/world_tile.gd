@@ -22,9 +22,12 @@ func generate_walls(tile: WorldGenerator.Tile) -> void:
 	for i in range(walls.size()):
 		var wall = walls[i]
 		
-		# free wall at index if not in tile
 		if wall not in tile.walls:
+			# free wall at index if not in tile
 			$Walls.get_child(i).queue_free()
+		else:
+			# free arrow at index if wall in tile
+			$Arrows.get_child(i).queue_free()
 
 # (ABSTRACT) generates content for the tile
 func generate() -> void: pass
