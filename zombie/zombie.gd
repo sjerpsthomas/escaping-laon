@@ -1,5 +1,5 @@
 class_name Zombie
-extends Node2D
+extends CharacterBody2D
 
 
 enum State { IDLE, ATTACK }
@@ -16,6 +16,9 @@ var health := 1.0
 
 var idle_timer := 0.0
 var attack_timer := 0.0
+
+var follow_velocity: Vector2
+var knockback_velocity: Vector2
 
 # -
 func _process(delta: float) -> void:
@@ -40,6 +43,15 @@ func handle_state(delta: float) -> void:
 	# do stuff
 	if state == State.IDLE: do_idle(delta)
 	else: do_attack(delta)
+	
+	# move, dampen movement, clamp position
+	velocity = follow_velocity + knockback_velocity
+	move_and_slide()
+	position = position.clamp(Vector2(-46, -46), Vector2(46, 46))
+	
+	# dampen knockback, reset follow velocity
+	knockback_velocity = knockback_velocity * exp(-10 * delta)
+	follow_velocity = Vector2()
 
 # initializes idle state
 func init_idle() -> void:
@@ -62,14 +74,16 @@ func do_attack(delta: float) -> void:
 	var dist := global_position.distance_to(player.global_position)
 	if dist < 6: return
 	
-	var prev_x := global_position.x
-	global_position = global_position.move_toward(player.global_position, delta * 6)
+	follow_velocity = 6 * (player.global_position - global_position).normalized()
 	
-	sprite.flip_h = prev_x > global_position.x
+	sprite.flip_h = follow_velocity.x < 1
 
 # takes damage
 func damage(amount: float) -> void:
 	health -= amount
+	
+	knockback_velocity += (global_position - world_tile.player.global_position).normalized() * 70
+	
 	if health < 0:
 		queue_free()
 

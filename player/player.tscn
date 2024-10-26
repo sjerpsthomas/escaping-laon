@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw53hcrwiv44l"]
+[gd_scene load_steps=9 format=3 uid="uid://bw53hcrwiv44l"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8lko4"]
 [ext_resource type="Texture2D" uid="uid://dse0r01fi75v0" path="res://player/player.png" id="2_0lo8q"]
@@ -187,7 +187,10 @@ _data = {
 "hit": SubResource("Animation_85pc4")
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r72na"]
+size = Vector2(6, 5)
+
+[node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_8lko4")
 
@@ -216,3 +219,7 @@ offset = Vector2(-2.5, -3)
 libraries = {
 "": SubResource("AnimationLibrary_7cvwl")
 }
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_r72na")

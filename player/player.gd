@@ -1,5 +1,5 @@
 class_name Player
-extends Node2D
+extends CharacterBody2D
 
 
 @onready var world_tile := get_parent() as WorldTile
@@ -13,9 +13,14 @@ func _process(delta: float) -> void:
 	var prev_x := global_position.x
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos := get_global_mouse_position().round()
-		global_position = global_position.move_toward(mouse_pos, delta * 30)
+		velocity = 30 * (mouse_pos - global_position).normalized()
 	
+	# move, clamp position
+	move_and_slide()
 	position = position.clamp(Vector2(-46, -46), Vector2(46, 46))
+	
+	# reset velocity
+	velocity = Vector2()
 	
 	# flip sprite
 	if roundi(prev_x) != roundi(global_position.x):
