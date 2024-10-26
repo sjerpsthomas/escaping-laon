@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 
 # attacks a zombie
 func attack(zombie: Zombie) -> void:
+	$SwordCentre.scale.y *= -1
+	$SwordCentre.rotation = global_position.angle_to_point(zombie.global_position)
+	$AnimationPlayer.play("hit")
+	
 	var dist := zombie.global_position.distance_to(global_position)
 	
 	if dist < 10:
