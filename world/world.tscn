@@ -21,6 +21,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 144.0
 offset_bottom = 96.0
+mouse_filter = 2
 script = ExtResource("3_luqe2")
 
 [node name="LeftBar" type="ColorRect" parent="UI"]
