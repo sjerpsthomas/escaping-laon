@@ -32,6 +32,28 @@ func generate_walls(tile: WorldGenerator.Tile) -> void:
 # (ABSTRACT) generates content for the tile
 func generate() -> void: pass
 
+# generates zombies
+func generate_zombies(count: int) -> void:
+	var zombie_scene := preload("res://zombie/zombie.tscn")
+	
+	for i in count:
+		var pos := Vector2(randf_range(-38, 38), randf_range(-38, 38))
+		var zombie: Zombie = zombie_scene.instantiate()
+		zombie.name = "Zombie" + str(i)
+		add_child(zombie)
+		zombie.position = pos
+
+# generates coins
+func generate_coins(count: int) -> void:
+	var coin_scene := preload("res://coin/coin.tscn")
+	
+	for i in count:
+		var pos := Vector2(randf_range(-38, 38), randf_range(-38, 38))
+		var coin: Node2D = coin_scene.instantiate()
+		coin.name = "Coin" + str(i)
+		add_child(coin)
+		coin.position = pos
+
 # navigates the world in the specified direction
 func go(direction: int) -> void:
 	print(direction)
